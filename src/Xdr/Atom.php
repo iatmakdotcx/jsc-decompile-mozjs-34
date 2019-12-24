@@ -22,7 +22,7 @@ trait Atom
 
     protected function getTwoByteChar()
     {
-        $char = '\u' . dechex($this->bytecodes[$this->parseIndex + 1]) . dechex($this->bytecodes[$this->parseIndex]);
+        $char = '\u' . str_pad(dechex(($this->bytecodes[$this->parseIndex + 1]<<8)+$this->bytecodes[$this->parseIndex]),4,'0',STR_PAD_LEFT);
         $this->parseIndex += 2;
         return $char;
     }
